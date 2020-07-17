@@ -1,0 +1,13 @@
+@import "../../../styles/shared.scss";
+:host {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+.forecasts {
+  @include forecastsStyles;
+
+  .forecast {
+    margin-right: 15px;
+  }
+}

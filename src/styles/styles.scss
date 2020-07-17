@@ -1,0 +1,145 @@
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css'; 
+@import './themes/theme.scss';
+/*********************
+VARIABLES
+*********************/
+:root {
+
+  --bg-color: #f8fafb;
+  --text-color: #272727;
+  --primary-color: #7e4aac;
+  --primary-light-color: #b587dd;
+  --secondary-color: #8c94a8;
+  --secondary-light-color: #b3b9c8;
+}
+
+$variables: (
+  --bg-color: var(--bg-color),
+  --text-color: var(--text-color),
+  --primary-color: var(--primary-color),
+  --primary-light-color: var(--primary-light-color),
+  --secondary-color: var(--secondary-color),
+  --secondary-light-color: var(--secondary-light-color),
+);
+
+@function var($variable) {
+  @return map-get($variables, $variable);
+}
+
+
+$red: #f44336;
+$maroon: #8f232f;
+$gray: #9faab8;
+$gray: #717c7d;
+$light-gray: #f5f7f7;
+$dark-gray: #616161;
+$blue-gray: #293e46;
+$white: #fff;
+$white-smoke: #f4f4f4;
+$black: #212121;
+$clr-users: #ff6900;
+$clr-reports: #9bbbc4;
+$clr-monitoring: #9bbbc4;
+$clr-training: #fab520;
+$clr-config: #3e6372;
+$clr-help-center: #53adee;
+$clr-portal: #3db29b;
+$clr-wizard: #448299;
+
+/*********************
+BREAKPOINTS
+*********************/
+
+$breakpoint-xs: 599.98px;
+$breakpoint-sm: 767.98px;
+$breakpoint-md: 959.98px;
+$breakpoint-lg: 1199.98px;
+$screen-xl: 1799.98px;
+$breakpoints: ( xs: $breakpoint-xs, sm: $breakpoint-sm, md: $breakpoint-md, lg: $breakpoint-lg);
+
+
+/*********************
+MEDIA QUERY
+*********************/
+@mixin mq($mq-breakpoint) {
+  $mq-media-query: "screen and";
+  @if $mq-breakpoint == landscape or $mq-breakpoint == portrait {
+    $mq-media-query: "#{$mq-media-query} (max-width: #{$breakpoint-sm}) and (orientation: #{$mq-breakpoint})";
+  } @else if $mq-breakpoint == handset {
+    $mq-media-query: "#{$mq-media-query} (max-width: 599.99px) and (orientation: portrait), "+"(max-width: 959.99px) and (orientation: landscape)";
+  } @else {
+    @if map-has-key($breakpoints, $mq-breakpoint) {
+      $mq-breakpoint: map-get($breakpoints, $mq-breakpoint);
+    }
+    $mq-media-query: "#{$mq-media-query} (max-width: #{$mq-breakpoint})";
+  }
+  @media #{$mq-media-query} {
+    @content;
+  }
+}
+/*********************
+FONT SIZE
+*********************/
+@mixin fs($sizeValue: $fs-md) {
+  @if map-has-key($font-sizes, $sizeValue) {
+    $sizeValue: map-get($font-sizes, $sizeValue);
+  }
+  font-size: $sizeValue;
+  line-height: calc(#{$sizeValue} + 0.5rem);
+}
+/*********************
+MAX WIDTH
+*********************/
+@mixin mxw($mq-breakpoint, $mt: 0, $mb: 0) {
+  @if map-has-key($breakpoints, $mq-breakpoint) {
+    $mq-breakpoint: map-get($breakpoints, $mq-breakpoint);
+  }
+  max-width: $mq-breakpoint;
+  margin: $mt auto $mb auto;
+}
+
+/*********************
+FONT_SIZE
+*********************/
+$fs-xs: 0.875rem; // 12px
+$fs-sm: 1rem; // 14px
+$fs-md: 1rem; // 16px
+$fs-tl: 1.25rem; // 20px
+$fs-lg: 1.5rem; // 24px
+$fs-xl: 1.75rem; // 28px
+$fs-xxl: 2rem; // 32px
+
+$font-sizes: (
+  xs: $fs-xs,
+  sm: $fs-sm,
+  md: $fs-md,
+  tl: $fs-tl,
+  lg: $fs-lg,
+  xl: $fs-xl,
+  xxl: $fs-xxl
+);  
+
+html,
+body {
+  height: 100%;
+}
+body{
+  display: flex;
+  min-height: 100vh;
+  
+}
+ 
+*,
+*:before,
+*:after {
+  box-sizing: border-box; 
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+

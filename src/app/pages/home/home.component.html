@@ -1,0 +1,31 @@
+ <input type="text" class="autoComplete"
+       [ngModel]="autoCompleteValue"
+       (input)="autoCompleteInput.next($event.target.value)">
+
+<div class="autocomplete-suggestions" *ngIf="autoCompletedSuggestions">
+  <div class="suggestion" *ngFor="let suggestion of autoCompletedSuggestions" (click)="selectSuggestion(suggestion)">
+    {{suggestion.LocalizedName}}, {{suggestion.Country.LocalizedName}}
+  </div>
+</div>
+
+
+<div class="title">
+  <p class="name">{{cityName}}</p>
+  <p class="headLine">{{headLine}}</p>
+</div>
+
+<div class="fav" *ngIf="cityName" (click)="toggleFavorites()">
+  <button mat-button class="example-icon favorite-icon" aria-label="icon-button with heart icon"> 
+    <mat-icon>favorite</mat-icon>  
+  </button> {{favState}} Favorites
+</div>
+
+
+<div class="forecasts">
+  <div class="forecast" *ngFor="let forecast of forecasts;">
+    <p class="date">{{forecast.Date | date: 'fullDate'}}</p>
+    <p class="phrase"> {{forecast.Day.IconPhrase}}</p>
+    <p class="temperature"> {{forecast.Temperature.Minimum.Value}}{{forecast.Temperature.Minimum.Unit}} - {{forecast.Temperature.Maximum.Value}}{{forecast.Temperature.Maximum.Unit}}</p>
+    <img src="{{forecast.Day.Icon | accuweatherIcon }}"/>
+  </div>
+</div>

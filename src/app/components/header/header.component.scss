@@ -1,0 +1,16 @@
+:host {
+    display: flex;
+    flex-direction: column; 
+  }
+.spacer {
+    flex: 1 1 auto;
+  }
+  .example-icon{
+      line-height: 1;
+  }
+  .pl-1{
+      padding-left: .25em;
+  }
+  a{
+      color: unset;
+  }

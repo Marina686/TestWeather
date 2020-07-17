@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">
+    <img src="./../../../assets/images/hiclipart.png" alt="Weather logo picture"> 
+    <span>Herolo Weather Task</span>
+    <span class="spacer"></span>
+    
+    <a routerLink="/" routerLinkActive="active"
+     [routerLinkActiveOptions]="{exact:true}" fxFlex.sm="1 1 0" fxFlex.xs="1 1 50">
+    <button mat-button class="example-icon" aria-label="icon-button with share icon">
+        <mat-icon>home</mat-icon> 
+        <span class="pl-1" >Home </span> 
+      </button>
+      </a>
+      <a routerLink="/fav" routerLinkActive="active">
+    <button mat-button class="example-icon favorite-icon" aria-label="icon-button with heart icon"> 
+      <mat-icon>favorite</mat-icon> 
+      <span class="pl-1">Favorite</span>
+    </button> 
+  </a> 
+  <mat-slide-toggle [checked]="isDarkTheme | async" (change)="toggleDarkTheme($event.checked)"></mat-slide-toggle>
+  </mat-toolbar>
+
+  
+
+  
